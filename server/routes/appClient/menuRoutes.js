@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../models')
+var models = require('../../models')
 
 router.get('/', (req, res, next) => {
   res.send('hello')
