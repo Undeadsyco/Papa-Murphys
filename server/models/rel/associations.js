@@ -1,4 +1,4 @@
-module.exports = associations = (models) =>{
+module.exports = associations = (models) => {
     models.section.belongsToMany(models.dough, {
         through: models.dough_section,
         foreignKey: 'section_id'
@@ -41,5 +41,45 @@ module.exports = associations = (models) =>{
     models.pizza.belongsToMany(models.orders, {
         through: models.order_pizzas,
         foreignKey: 'pizza_id'
+    })
+
+    models.orders.hasMany(models.order_discounts, {
+        foreignKey: 'order_id'
+    })
+    models.order_discounts.belongsTo(models.orders)
+
+    models.employee.hasMany(models.clock_in_times, {
+        foreignKey: 'Employee_Id'
+    });
+    models.clock_in_times.belongsTo(models.employee, {
+        foreignKey: 'Employee_Id'
+    });
+
+    models.employee.hasMany(models.clock_out_times, {
+        foreignKey: 'Employee_Id'
+    });
+    models.clock_out_times.belongsTo(models.employee, {
+        foreignKey: 'Employee_Id'
+    });
+
+    models.employee.hasMany(models.break_in_times, {
+        foreignKey: 'Employee_Id'
+    })
+    models.break_in_times.belongsTo(models.employee, {
+        foreignKey: 'Employee_Id'
+    })
+
+    models.employee.hasMany(models.break_out_times, {
+        foreignKey: 'Employee_Id'
+    })
+    models.break_out_times.belongsTo(models.employee, {
+        foreignKey: 'Employee_Id'
+    })
+
+    models.employee.hasOne(models.register, {
+        foreignKey: 'Employee_Id'
+    });
+    models.register.belongsTo(models.employee, {
+        foreignKey: 'Employee_Id'
     })
 }

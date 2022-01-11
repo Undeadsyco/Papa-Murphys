@@ -1,15 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var models = require('./models')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const models = require('./models');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var appClientRouter = require('./routes/appClient')
+// POS routes
+const posRoutes = require('./routes/posClient');
+const res = require('express/lib/response');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,9 +27,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/appClient', appClientRouter)
+app.get('/', (req, res) => {
+  res.send('hello this is the back end server')
+})
+
+// POS routes
+app.use('/v1/pos/menu', posRoutes.menuRoutes);
+app.use('/v1/pos/order', posRoutes.orderRoutes);
+app.use('/v1/pos/inventory', posRoutes.inventoryRoutes);
+app.use('/v1/pos/employee', posRoutes.employeeRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,12 +5,20 @@ module.exports = function(sequelize, DataTypes) {
     order_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      refrerance: {
+        module: 'orders',
+        key: 'order_id',
+      }
     },
     pizza_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      refrerance: {
+        module: 'pizza',
+        key: 'pizza_id',
+      }
     },
     size: {
       type: DataTypes.STRING(45),

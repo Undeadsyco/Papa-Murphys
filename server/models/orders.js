@@ -8,8 +8,20 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true,
     },
+    Register_Id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'register',
+        key: 'Register_Id'
+      }
+    },
     order_name: {
       type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    phone_number: {
+      type: DataTypes.BIGINT,
       allowNull: true
     },
     subtotal: {
@@ -24,6 +36,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.FLOAT,
       allowNull: false
     },
+    gross_total: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
     paid_amount: {
       type: DataTypes.FLOAT,
       allowNull: false
@@ -32,13 +48,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    order_time: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-    },
     order_status: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    order_type: {
+      type: DataTypes.STRING(45),
+      allowNull: false
+    },
+    order_time: {
+      type: DataTypes.DATE,
       allowNull: false
     }
   }, {
