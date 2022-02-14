@@ -7,7 +7,7 @@ const models = require('./models');
 
 // POS routes
 const posRoutes = require('./routes/posClient');
-const res = require('express/lib/response');
+// const res = require('express/lib/response');
 
 const app = express();
 
