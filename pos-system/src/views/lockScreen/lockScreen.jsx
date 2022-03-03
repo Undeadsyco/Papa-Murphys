@@ -7,7 +7,7 @@ import NumberPad from '../../components/numberPad';
 
 import {
   ViewContainer, HeadingContainer, Heading,
-  SecondaryHeading, Input, PadContainer, Paragraph,
+  SecondaryHeading, Input, PadContainer,
 } from './styles';
 
 const LockScreen = (props) => {
