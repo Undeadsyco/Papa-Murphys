@@ -51,8 +51,6 @@ const LockScreen = (props) => {
       <PadContainer colStart={2} colEnd={3} rowStart={3} rowEnd={6}>
         <NumberPad submitAction={login} action={setPin} value={pin} />
       </PadContainer>
-      <Paragraph style={{ gridRow: '5/6', justifySelf: 'end' }}>All Rights reserved by me BITCH! Fuck around and find out!</Paragraph>
-      <Paragraph style={{ gridColumn: '3/4', gridRow: '5/6' }}>Im Just Playin, You Know I Love You</Paragraph>
     </ViewContainer>
   );
 };
